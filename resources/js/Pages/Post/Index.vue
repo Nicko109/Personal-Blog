@@ -1,15 +1,14 @@
 <template>
-    <div class="w-96 mx-auto">
+    <div class="max-w-screen-md w-full mx-auto">
         <div v-if="isAdmin" class="form-group mb-4 flex items-center justify-between mb-6 pb-6 border-b border-gray-400">
             <h1 style="color: blue">Посты</h1>
             <Link :href="route('posts.create')" class="inline-block bg-sky-600 px-3 py-2 text-white">Добавить</Link>
         </div>
         <div class="mb-6 pb-6 border-b border-gray-400" v-for="post in posts">
-
             <Link :href="route('posts.show', post.id)">
                 <h1 class="pb-4 text-xl link-text">{{ post.title }}</h1>
             </Link>
-            <div class="pb-4"><img :src="post.image" :alt="post.id"></div>
+            <div class="pb-4"> <img class="w-50 h-80 object-cover" :src="post.image" :alt="post.id"></div>
             <p class="pb-4" style="word-break: break-word;">{{ post.content }}</p>
             <div class="flex justify-between items-center mt-2">
                 <div class="flex">
@@ -50,12 +49,12 @@
                        class="inline-block bg-sky-600 px-3 py-2 text-white">Комментировать</a>
                 </div>
             </div>
-            <div v-if="isAdmin" class="form-group my-4 flex items-center justify-between">
+            <div v-if="isAdmin" class="form-group my-4 flex items-center">
                 <Link :href="route('posts.edit', post.id)" class="inline-block bg-green-600 px-3 py-2 text-white">
                     Редактировать
                 </Link>
-                <Link as="button" method="delete" :href="route('posts.destroy', post.id)"
-                      class="inline-block bg-rose-600 px-3 py-2 text-white">Удалить
+                <Link as="button" method="delete" :href="route('posts.destroy', post.id)" class="inline-block bg-rose-600 px-3 py-2 text-white ml-2">
+                    Удалить
                 </Link>
             </div>
         </div>

@@ -1,12 +1,12 @@
 <template>
-    <div class="w-96 mx-auto">
+    <div class="max-w-screen-md w-full mx-auto">
         <div class="form-group mb-4">
             <Link :href="route('videos.index')" class="inline-block bg-sky-600 px-3 py-2 text-white">Назад</Link>
         </div>
         <h1 style="word-break: break-word;" class="pb-4 text-xl">{{video.title}}</h1>
         <div class="pb-4">
             <video width="320" height="240" controls>
-                <source :src="video.file" type="video/mp4">
+                <source class="w-50 h-80 object-cover" :src="video.file" type="video/mp4">
                 Ваш браузер не поддерживает тег video.
             </video>
         </div>

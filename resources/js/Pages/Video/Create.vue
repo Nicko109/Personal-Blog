@@ -1,5 +1,8 @@
     <template>
-        <div class="w-96 mx-auto">
+        <div class="max-w-screen-md w-full mx-auto">
+            <div class="form-group mb-4">
+                <Link :href="route('videos.index')" class="inline-block bg-sky-600 px-3 py-2 text-white">Назад</Link>
+            </div>
             <div class="mb-4">
                 <div class=" mb-3">
                     <input v-model="title" class="w-96 border p-2 border-slate-300" type="text" placeholder="Добавить наименование">

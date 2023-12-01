@@ -1,5 +1,5 @@
 <template>
-    <div class="w-96 mx-auto">
+    <div class="max-w-screen-md w-full mx-auto">
         <div class="form-group mb-4">
             <Link :href="route('notes.index')" class="inline-block bg-sky-600 px-3 py-2 text-white">Назад</Link>
         </div>

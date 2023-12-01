@@ -1,5 +1,5 @@
 <template>
-    <div class="w-96 mx-auto">
+    <div class="max-w-screen-md w-full mx-auto">
         <div v-if="isAdmin" class="form-group mb-4 flex items-center justify-between mb-6 pb-6 border-b border-gray-400">
             <h1 style="color: blue">Заметки</h1>
             <Link :href="route('notes.create')" class="inline-block bg-sky-600 px-3 py-2 text-white">Добавить</Link>
@@ -57,16 +57,11 @@
                     </a>
                 </div>
             </div>
-            <div v-if="isAdmin"  class="form-group my-4 flex items-center justify-between">
+            <div v-if="isAdmin" class="form-group my-4 flex items-center">
                 <Link :href="route('notes.edit', note.id)" class="inline-block bg-green-600 px-3 py-2 text-white">
-                    Редактировать {{}}
+                    Редактировать
                 </Link>
-                <Link
-                    as="button"
-                    method="delete"
-                    :href="route('notes.destroy', note.id)"
-                    class="inline-block bg-rose-600 px-3 py-2 text-white"
-                >
+                <Link as="button" method="delete" :href="route('notes.destroy', note.id)" class="inline-block bg-rose-600 px-3 py-2 text-white ml-2">
                     Удалить
                 </Link>
             </div>
