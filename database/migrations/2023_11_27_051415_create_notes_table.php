@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
             $table->text('title');
-            $table->foreignId('user_id')->nullable()->index()->constrained('users');
+            $table->foreignId('user_id')->nullable()->index()->constrained('users')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
 

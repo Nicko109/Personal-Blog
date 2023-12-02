@@ -26,6 +26,8 @@ class UserService
 
     public static function destroy(User $user)
     {
+
+
         return $user->delete();
     }
 }

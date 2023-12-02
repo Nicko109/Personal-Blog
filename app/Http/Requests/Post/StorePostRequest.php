@@ -24,7 +24,7 @@ class StorePostRequest extends FormRequest
         return [
             'title' => 'required|string',
             'content' => 'required|string',
-            'image' => 'nullable|file',
+            'image' => 'nullable|image',
         ];
     }
 
@@ -35,7 +35,7 @@ class StorePostRequest extends FormRequest
             'title.string' => 'Данные должны соответствовать строчному типу',
             'content.required' => 'Это поле необходимо для заполнения',
             'content.string' => 'Данные должны соответствовать строчному типу',
-            'image.file' => 'Необходимо выбрать изображение',
+            'image.image' => 'Необходимо выбрать изображение',
         ];
     }
 }

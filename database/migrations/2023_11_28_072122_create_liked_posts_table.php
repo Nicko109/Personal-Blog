@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('liked_posts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->index()->constrained('users');
-            $table->foreignId('post_id')->index()->constrained('posts');
+            $table->foreignId('user_id')->index()->constrained('users')->onDelete('cascade');
+            $table->foreignId('post_id')->index()->constrained('posts')->onDelete('cascade');
 
             $table->unique(['user_id', 'post_id']);
             $table->timestamps();

@@ -78,6 +78,8 @@ class User extends Authenticatable
 
     }
 
+
+
     public function roles()
     {
         return $this->belongsToMany(Role::class);
@@ -88,4 +90,29 @@ class User extends Authenticatable
     {
         return $this->roles->pluck('title')->contains(Role::ROLE_ADMIN);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'user_id', 'id');
+    }
+
+    public function noteComments()
+    {
+        return $this->hasMany(NoteComment::class, 'user_id', 'id');
+    }
+
+    public function videoComments()
+    {
+        return $this->hasMany(VideoComment::class, 'user_id', 'id');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(LikedPost::class, 'user_id', 'id');
+    }
+
+
+
+
+
 }

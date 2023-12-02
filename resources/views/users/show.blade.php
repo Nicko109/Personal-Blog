@@ -24,18 +24,10 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-12">
+                    <div class="mb-4">
+                        <a href="{{ route('admin.users.index') }}" class="btn btn-primary">Назад</a>
+                    </div>
                     <div class="card">
-                        <div class="card-header d-flex p-3">
-                            <div class="mr-4">
-                                <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-success">Редактировать</a>
-                            </div>
-                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="post">
-                                @csrf
-                                @method('delete')
-                                <input type="submit" class="btn btn-danger" value="Удалить">
-                            </form>
-                        </div>
-
                         <div class="card-body table-responsive p-0">
                             <table class="table table-hover text-wrap">
                                 <thead>
@@ -56,8 +48,16 @@
                         </div>
 
                     </div>
-                    <div class="mr-4">
-                        <a href="{{ route('admin.users.index') }}" class="btn btn-primary">Назад</a>
+
+                    <div class="card-header d-flex p-3">
+                        <div class="mr-4">
+                            <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-success">Редактировать</a>
+                        </div>
+                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <input type="submit" class="btn btn-danger" value="Удалить">
+                        </form>
                     </div>
                 </div>
             </div>

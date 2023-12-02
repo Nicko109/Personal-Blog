@@ -35,12 +35,16 @@
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
+            <li class="nav-item mr-4">
+                <a href="{{ route('main.index') }}" class="btn btn-primary">На главную</a>
+            </li>
             <li class="nav-item">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <input type="submit" value="Выйти" class="btn btn-outline-primary">
                 </form>
             </li>
+
         </ul>
     </nav>
     <!-- /.navbar -->

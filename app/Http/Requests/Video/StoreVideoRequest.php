@@ -24,7 +24,8 @@ class StoreVideoRequest extends FormRequest
         return [
             'title' => 'required|string',
             'content' => 'required|string',
-            'file' => 'nullable|file',
+            'file' => 'nullable|file|mimes:mp4,mov,avi,wmv',
+            'file.mimes' => 'Поддерживаемые форматы видео: mp4, mov, avi, wmv',
         ];
     }
 
@@ -36,6 +37,7 @@ class StoreVideoRequest extends FormRequest
             'content.required' => 'Это поле необходимо для заполнения',
             'content.string' => 'Данные должны соответствовать строчному типу',
             'file.file' => 'Необходимо выбрать видеофайл',
+            'file.mimes' => 'Поддерживаемые форматы видео: mp4, mov, avi, wmv',
         ];
     }
 }

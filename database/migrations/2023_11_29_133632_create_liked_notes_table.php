@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('liked_notes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->index()->constrained('users');
-            $table->foreignId('note_id')->index()->constrained('notes');
+            $table->foreignId('user_id')->index()->constrained('users')->onDelete('cascade');
+            $table->foreignId('note_id')->index()->constrained('notes')->onDelete('cascade');
 
             $table->unique(['user_id', 'note_id']);
             $table->timestamps();

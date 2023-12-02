@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('video_comments', function (Blueprint $table) {
             $table->id();
             $table->text('body');
-            $table->foreignId('user_id')->index()->constrained('users');
-            $table->foreignId('video_id')->index()->constrained('videos');
+            $table->foreignId('user_id')->index()->constrained('users')->onDelete('cascade');
+            $table->foreignId('video_id')->index()->constrained('videos')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

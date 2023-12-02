@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('liked_videos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->index()->constrained('users');
-            $table->foreignId('video_id')->index()->constrained('videos');
+            $table->foreignId('user_id')->index()->constrained('users')->onDelete('cascade');
+            $table->foreignId('video_id')->index()->constrained('videos')->onDelete('cascade');
 
             $table->unique(['user_id', 'video_id']);
             $table->timestamps();
