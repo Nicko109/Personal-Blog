@@ -13,14 +13,6 @@ class NoteService
     {
         $notes = Note::latest()->get();
 
-        $likedNoteIds = LikedNote::where('user_id', auth()->id())->get('note_id')
-            ->pluck('note_id')->toArray();
-
-        foreach ($notes as $note) {
-            if(in_array($note->id, $likedNoteIds)) {
-                $note->is_liked = true;
-            }
-        }
 
         return $notes;
     }
@@ -33,17 +25,6 @@ class NoteService
         return Note::create($data);
     }
 
-    public static function show(Note $note)
-    {
-        $likedNoteIds = LikedNote::where('user_id', auth()->id())->get('note_id')
-            ->pluck('note_id')->toArray();
-
-        if(in_array($note->id, $likedNoteIds)) {
-            $note->is_liked = true;
-        }
-
-        return $note;
-    }
 
 
 

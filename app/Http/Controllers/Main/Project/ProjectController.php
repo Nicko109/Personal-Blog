@@ -58,7 +58,6 @@ class NoteController extends Controller
     public function show(Note $note)
     {
         $this->authorize('view', $note);
-        $note = NoteService::show($note);
 
         $note = NoteResource::make($note)->resolve();
 
@@ -103,14 +102,6 @@ class NoteController extends Controller
 
     }
 
-    public function toggleLike(Note $note)
-    {
-        $res = auth()->user()->likedNotes()->toggle($note->id);
-
-        $data['is_liked'] = count($res['attached']) > 0;
-        $data['likes_count'] = $note->likedUsers()->count();
-        return $data;
-    }
 
     public function comment(Note $note, CommentRequest $request)
     {

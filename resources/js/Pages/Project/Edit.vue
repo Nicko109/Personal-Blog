@@ -1,7 +1,7 @@
 <template>
     <div class="max-w-screen-md w-full mx-auto">
         <div class="form-group mb-4">
-            <Link :href="route('notes.index')" class="inline-block bg-sky-600 px-3 py-2 text-white">Назад</Link>
+            <Link :href="route('projects.index')" class="inline-block bg-sky-600 px-3 py-2 text-white">Назад</Link>
         </div>
         <div class="mb-4">
             <textarea rows="8" cols="80" v-model="title" class="border-gray-300 mt-1 p-2 w-full border rounded-md"  type="text"></textarea>
@@ -25,17 +25,17 @@ export default {
 
     components: {Link},
 
-    props: ['note', 'errors'],
+    props: ['project', 'errors'],
 
     data() {
         return {
-            title: this.note.title,
+            title: this.project.title,
         }
     },
 
     methods: {
         update() {
-            router.patch(`/notes/${this.note.id}`, {title: this.title})
+            router.patch(`/projects/${this.project.id}`, {title: this.title})
         }
     }
 
