@@ -1,13 +1,10 @@
 <template>
     <div class="flex justify-between p-8 max-w-screen-md w-full mx-auto">
         <div class="form-group mb-4">
-            <Link :href="route('notes.index')" class="inline-block bg-sky-600 px-3 py-2 text-white">Заметки</Link>
+            <Link :href="route('projects.index')" class="inline-block bg-sky-600 px-3 py-2 text-white">Проекты</Link>
         </div>
         <div class="form-group mb-4">
             <Link :href="route('posts.index')" class="inline-block bg-green-600 px-3 py-2 text-white">Посты</Link>
-        </div>
-        <div class="form-group mb-4">
-            <Link :href="route('videos.index')" class="inline-block bg-purple-600 px-3 py-2 text-white">Видео</Link>
         </div>
         <div v-if="isAdmin" class="form-group mb-4">
             <a :href="route('admin.main.index')" class="inline-block bg-orange-600 px-3 py-2 text-white">Админ</a>

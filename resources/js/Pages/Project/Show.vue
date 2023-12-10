@@ -7,34 +7,6 @@
         <div class="flex justify-between items-center mt-2">
             <p class="text-right text-sm text-slate-500">{{project.date}}</p>
         </div>
-        <div v-if="project.comments_count > 0" class="mt-4">
-            <p class="pb-4 text-xl link-text" v-if="!isShowed" @click="getComments(project)">
-                Показать {{ project.comments_count }} комментарий
-            </p>
-            <p class="pb-4 text-xl link-text" v-if="isShowed" @click="isShowed = false">Закрыть</p>
-            <div v-if="comments && isShowed">
-                <div v-for="comment in comments" class="mt-4 pt-4 border-t border-gray-300">
-                    <p class="text-sm">{{ comment.user.name }}</p>
-                    <p style="word-break: break-word;">{{ comment.body }}</p>
-                    <p class="text-right text-sm text-slate-500">{{ comment.date }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="mt-4">
-            <div class=" mb-3">
-                <input v-model="commentsData[project.id]" class="w-96 border p-2 border-slate-300" type="text"
-                       placeholder="Добавить комментарий">
-            </div>
-            <div class="mb-3" v-if="errors[project.id] && errors[project.id].body">
-                <p v-for="error in errors[project.id].body" class="text-sm mt-2 text-red-500">{{ error }}</p>
-            </div>
-            <div class="form-group mb-4">
-                <a @click.prevent="storeComment(project)" href="#"
-                   class="inline-block bg-sky-600 px-3 py-2 text-white">
-                    Комментировать
-                </a>
-            </div>
-        </div>
         <div v-if="isAdmin" class="form-group my-4 flex items-center">
             <Link :href="route('projects.edit', project.id)" class="inline-block bg-green-600 px-3 py-2 text-white">
                 Редактировать
@@ -58,42 +30,12 @@ export default {
     props:['project', "isAdmin"],
     data() {
         return {
-            commentsData: {},
-            comments: [],
             errors: [],
-            isShowed: false,
         };
     },
 
     components: {Link},
 
-    methods: {
-        storeComment(project) {
-            axios
-                .post(`/projects/${project.id}/comment`, {body: this.commentsData[project.id] || ""})
-                .then((res) => {
-                    this.commentsData[project.id] = "";
-                    this.comments.unshift(res.data.data);
-                    project.comments_count++;
-                    this.isShowed = true;
-                })
-                .catch((e) => {
-                    this.errors = { ...this.errors, [project.id]: e.response.data.errors };
-                });
-        },
-
-        getComments(project) {
-            axios
-                .get(`/projects/${project.id}/comment`)
-                .then((res) => {
-                    this.commentsData[project.id] = "";
-                    this.comments = res.data.data;
-                    this.isShowed = true;
-                })
-
-        },
-
-    },
 
     layout: MainLayout
 }

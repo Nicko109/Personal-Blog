@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Заметка</h1>
+                    <h1 class="m-0">Проект</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="mr-4 mb-4">
-                        <a href="{{ route('admin.notes.index') }}" class="btn btn-primary">Назад</a>
+                        <a href="{{ route('admin.projects.index') }}" class="btn btn-primary">Назад</a>
                     </div>
                     <div class="card">
                         <div class="card-body table-responsive p-0">
@@ -38,8 +38,8 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td>{{ $note->id }}</td>
-                                    <td class="text-wrap">{{ $note->title }}</td>
+                                    <td>{{ $project->id }}</td>
+                                    <td class="text-wrap">{{ $project->title }}</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -51,9 +51,9 @@
             </div>
             <div class="card-header d-flex p-3">
                 <div class="mr-4">
-                    <a href="{{ route('admin.notes.edit', $note->id) }}" class="btn btn-success">Редактировать</a>
+                    <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-success">Редактировать</a>
                 </div>
-                <form action="{{ route('admin.notes.destroy', $note->id) }}" method="post">
+                <form action="{{ route('admin.projects.destroy', $project->id) }}" method="post">
                     @csrf
                     @method('delete')
                     <input type="submit" class="btn btn-danger" value="Удалить">

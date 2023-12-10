@@ -13,14 +13,6 @@ class PostService
     {
         $posts = Post::latest()->get();
 
-        $likedPostIds = LikedPost::where('user_id', auth()->id())->get('post_id')
-            ->pluck('post_id')->toArray();
-
-        foreach ($posts as $post) {
-            if (in_array($post->id, $likedPostIds)) {
-                $post->is_liked = true;
-            }
-        }
         return $posts;
     }
 
@@ -33,18 +25,6 @@ class PostService
     }
 
 
-    public static function show(Post $post)
-    {
-        $likedPostIds = LikedPost::where('user_id', auth()->id())->get('post_id')
-            ->pluck('post_id')->toArray();
-
-        if (in_array($post->id, $likedPostIds)) {
-            $post->is_liked = true;
-        }
-
-
-        return $post;
-    }
 
 
 

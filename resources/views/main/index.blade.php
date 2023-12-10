@@ -27,14 +27,14 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>{{$data['notesCount']}}</h3>
+                            <h3>{{$data['projectsCount']}}</h3>
 
-                            <p>Заметки</p>
+                            <p>Проекты</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
                         </div>
-                        <a href="{{ route('admin.notes.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('admin.projects.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -53,20 +53,6 @@
                     </div>
                 </div>
                 <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>{{$data['videosCount']}}</h3>
-
-                            <p>Видео</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-person-add"></i>
-                        </div>
-                        <a href="{{ route('admin.videos.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                     <!-- small box -->

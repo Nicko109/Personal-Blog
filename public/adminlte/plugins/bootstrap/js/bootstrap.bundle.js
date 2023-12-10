@@ -3581,7 +3581,7 @@
      * The latter is a deprecated method because it leads to confusion and will be
      * removed in v2.<br />
      * Additionally, it accepts additions and subtractions between different units.
-     * Note that multiplications and divisions aren't supported.
+     * Project that multiplications and divisions aren't supported.
      *
      * Valid examples are:
      * ```
@@ -3791,7 +3791,7 @@
      * Computes the style that will be applied to the popper element to gets
      * properly positioned.
      *
-     * Note that this modifier will not touch the DOM, it just prepares the styles
+     * Project that this modifier will not touch the DOM, it just prepares the styles
      * so that `applyStyle` modifier can apply it. This separation is useful
      * in case you need to replace `applyStyle` with a custom implementation.
      *
@@ -3836,7 +3836,7 @@
      * you want to integrate Popper.js inside a framework or view library and you
      * want to delegate all the DOM manipulations to it.
      *
-     * Note that if you disable this modifier, you must make sure the popper element
+     * Project that if you disable this modifier, you must make sure the popper element
      * has its position set to `absolute` before Popper.js can do its work!
      *
      * Just disable this modifier and define your own to achieve the desired effect.
@@ -5083,7 +5083,7 @@
       var _this10 = this;
 
       if (this._isBodyOverflowing) {
-        // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
+        // Project: DOMNode.style.paddingRight returns the actual value or '' if not set
         //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
         var fixedContent = [].slice.call(document.querySelectorAll(SELECTOR_FIXED_CONTENT));
         var stickyContent = [].slice.call(document.querySelectorAll(SELECTOR_STICKY_CONTENT)); // Adjust fixed content padding

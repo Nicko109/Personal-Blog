@@ -10,7 +10,7 @@ use App\Http\Resources\Comment\CommentResource;
 use App\Http\Resources\Post\PostResource;
 use App\Models\Comment;
 use App\Models\LikedPost;
-use App\Models\Note;
+use App\Models\Project;
 use App\Models\Post;
 use App\Services\PostService;
 use Illuminate\Http\Request;
@@ -59,7 +59,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $this->authorize('view', $post);
-        $post = PostService::show($post);
+
         $isAdmin = auth()->user()->is_admin;
         $post = PostResource::make($post)->resolve();
 
@@ -105,14 +105,6 @@ class PostController extends Controller
 
     }
 
-    public function toggleLike(Post $post)
-    {
-        $res = auth()->user()->likedPosts()->toggle($post->id);
-
-        $data['is_liked'] = count($res['attached']) > 0;
-        $data['likes_count'] = $post->likedUsers()->count();
-        return $data;
-    }
 
     public function comment(Post $post, CommentRequest $request)
     {

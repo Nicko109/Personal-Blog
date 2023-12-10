@@ -14773,7 +14773,7 @@ var widgetsSlider = $.widget( "ui.slider", $.ui.mouse, {
 			"ui-slider": "ui-corner-all",
 			"ui-slider-handle": "ui-corner-all",
 
-			// Note: ui-widget-header isn't the most fittingly semantic framework class for this
+			// Project: ui-widget-header isn't the most fittingly semantic framework class for this
 			// element, but worked best visually with a variety of themes
 			"ui-slider-range": "ui-corner-all ui-widget-header"
 		},
@@ -16937,7 +16937,7 @@ var widgetsSortable = $.widget( "ui.sortable", $.ui.mouse, {
 			delayedTriggers = [];
 
 		// We first have to update the dom position of the actual currentItem
-		// Note: don't do it if the current item is already removed (by a user), or it gets
+		// Project: don't do it if the current item is already removed (by a user), or it gets
 		// reappended (see #4088)
 		if ( !this._noFinalSort && this.currentItem.parent().length ) {
 			this.placeholder.before( this.currentItem );

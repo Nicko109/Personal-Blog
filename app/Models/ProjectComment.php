@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class NoteComment extends Model
+class ProjectComment extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -17,8 +17,8 @@ class NoteComment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function note()
+    public function project()
     {
-        return $this->belongsTo(Note::class);
+        return $this->belongsTo(Project::class);
     }
 }

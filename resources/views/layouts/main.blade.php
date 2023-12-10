@@ -62,21 +62,15 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <a href="{{ route('admin.notes.index') }}" class="nav-link">
+                        <a href="{{ route('admin.projects.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-clipboard"></i>
-                            <p>Заметки</p>
+                            <p>Проекты</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('admin.posts.index') }}" class="nav-link">
                             <i class="nav-icon far fa-image"></i>
                             <p>Посты</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.videos.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-video"></i>
-                            <p>Видео</p>
                         </a>
                     </li>
                     <li class="nav-item">

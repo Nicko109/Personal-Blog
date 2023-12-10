@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Note;
+use App\Models\Project;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class NotePolicy
+class ProjectPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class NotePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Note $note): bool
+    public function view(User $user, Project $note): bool
     {
         return true;
     }
@@ -39,7 +39,7 @@ class NotePolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Note $note): bool
+    public function update(User $user, Project $note): bool
     {
         if ($user->is_admin) {
             return true;
@@ -51,7 +51,7 @@ class NotePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Note $note): bool
+    public function delete(User $user, Project $note): bool
     {
         if ($user->is_admin) {
             return true;
@@ -63,7 +63,7 @@ class NotePolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Note $note): bool
+    public function restore(User $user, Project $note): bool
     {
         if ($user->is_admin) {
             return true;
@@ -75,7 +75,7 @@ class NotePolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Note $note): bool
+    public function forceDelete(User $user, Project $note): bool
     {
         if ($user->is_admin) {
             return true;

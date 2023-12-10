@@ -4,8 +4,10 @@
         <Link :href="route('projects.index')" class="inline-block bg-sky-600 px-3 py-2 text-white">Назад</Link>
     </div>
     <div class="mb-4">
-        <textarea rows="8" cols="80" v-model="title" class="border-gray-300 mt-1 p-2 w-full border rounded-md"  type="text" placeholder="Добавить проект"></textarea>
+      <div class=" mb-3">
+        <input v-model="title" class="w-96 border p-2 border-slate-300" type="text" placeholder="Добавить наименование">
         <div v-if="errors.title" class="text-red-600 text-sm">{{ errors.title }}</div>
+      </div>
     </div>
     <div class="form-group mb-4">
         <a @click.prevent="store" href="#" class="inline-block bg-sky-600 px-3 py-2 text-white">Добавить</a>

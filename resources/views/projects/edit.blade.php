@@ -24,25 +24,26 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-lg-6 col-12">
-                    <form action="{{route('admin.notes.update', $note->id)}}" method="post">
+                    <form action="{{route('admin.projects.update', $project->id)}}" method="post">
                         @csrf
                         @method('patch')
                         <div class="form-group">
-                            <textarea name="title" rows="8" cols="80">{{ $note->title }}</textarea>
+                            <input type="text" class="form-control" placeholder="Название проекта" name="title"  value="{{ $project->title }}">
                             @error('title')
-                            <div class="text-danger">{{ $message }}</div>
+                            <div class="text-danger">Это поле необходимо для заполнения</div>
                             @enderror
                         </div>
                         <div class="form-group mt-3">
                             <input type="submit" class="btn btn-success" value="Редактировать">
                         </div>
                         <div class="mr-4">
-                            <a href="{{ route('admin.notes.show', $note->id) }}" class="btn btn-primary">Назад</a>
+                            <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-primary">Назад</a>
                         </div>
                     </form>
                 </div>
-                <!-- /.row -->
-            </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 @endsection

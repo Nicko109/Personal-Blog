@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Добавить заметку</h1>
+                    <h1 class="m-0">Добавить проект</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -24,10 +24,10 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-lg-6 col-12">
-                    <form action="{{route('admin.notes.store')}}" method="post">
+                    <form action="{{route('admin.projects.store')}}" method="post">
                         @csrf
                         <div class="form-group">
-                            <textarea placeholder="Добавить заметку" name="title" rows="8" cols="80">{{ old('title') }}</textarea>
+                            <input type="text" class="form-control" placeholder="Название проекта" name="title">
                             @error('title')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -36,7 +36,7 @@
                             <input type="submit" class="btn btn-primary" value="Добавить">
                         </div>
                         <div class="mr-4">
-                            <a href="{{ route('admin.notes.index') }}" class="btn btn-primary">Назад</a>
+                            <a href="{{ route('admin.projects.index') }}" class="btn btn-primary">Назад</a>
                         </div>
                     </form>
                 </div>

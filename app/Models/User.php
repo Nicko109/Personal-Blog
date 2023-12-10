@@ -48,34 +48,11 @@ class User extends Authenticatable
         return $this->hasMany(Post::class, 'user_id', 'id');
     }
 
-    public function likedPosts()
+
+
+    public function projects()
     {
-        return $this->belongsToMany(Post::class, 'liked_posts', 'user_id', 'post_id');
-
-    }
-
-
-
-    public function notes()
-    {
-        return $this->hasMany(Note::class, 'user_id', 'id');
-    }
-
-    public function likedNotes()
-    {
-        return $this->belongsToMany(Note::class, 'liked_notes', 'user_id', 'note_id');
-
-    }
-
-    public function videos()
-    {
-        return $this->hasMany(Video::class, 'user_id', 'id');
-    }
-
-    public function likedVideos()
-    {
-        return $this->belongsToMany(Video::class, 'liked_videos', 'user_id', 'video_id');
-
+        return $this->hasMany(Project::class, 'user_id', 'id');
     }
 
 
@@ -96,20 +73,12 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class, 'user_id', 'id');
     }
 
-    public function noteComments()
+    public function projectComments()
     {
-        return $this->hasMany(NoteComment::class, 'user_id', 'id');
+        return $this->hasMany(ProjectComment::class, 'user_id', 'id');
     }
 
-    public function videoComments()
-    {
-        return $this->hasMany(VideoComment::class, 'user_id', 'id');
-    }
 
-    public function likes()
-    {
-        return $this->hasMany(LikedPost::class, 'user_id', 'id');
-    }
 
 
 

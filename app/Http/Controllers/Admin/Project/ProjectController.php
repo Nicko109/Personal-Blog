@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Note;
+namespace App\Http\Controllers\Admin\Project;
 
 use App\Http\Controllers\Controller;
-use App\Models\Note;
-use App\Http\Requests\Note\StoreNoteRequest;
-use App\Http\Requests\Note\UpdateNoteRequest;
-use App\Services\NoteService;
+use App\Models\Project;
+use App\Http\Requests\Project\StoreProjectRequest;
+use App\Http\Requests\Project\UpdateProjectRequest;
+use App\Services\ProjectService;
 use Mockery\Matcher\Not;
 
-class NoteController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $notes = NoteService::index();
+        $projects = ProjectService::index();
 
-        return view('notes.index', compact('notes'));
+        return view('projects.index', compact('projects'));
     }
 
     /**
@@ -26,57 +26,57 @@ class NoteController extends Controller
      */
     public function create()
     {
-        return view('notes.create');
+        return view('projects.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreNoteRequest $request)
+    public function store(StoreProjectRequest $request)
     {
         $data = $request->validated();
 
-        $note = NoteService::store($data);
+        $project = ProjectService::store($data);
 
-        return redirect()->route('admin.notes.index');
+        return redirect()->route('admin.projects.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Note $note)
+    public function show(Project $project)
     {
-        return view('notes.show', compact('note'));
+        return view('projects.show', compact('project'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Note $note)
+    public function edit(Project $project)
     {
-        return view('notes.edit', compact('note'));
+        return view('projects.edit', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateNoteRequest $request, Note $note)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
         $data = $request->validated();
-        NoteService::update($note, $data);
+        ProjectService::update($project, $data);
 
-        return redirect()->route('admin.notes.show', compact('note'));
+        return redirect()->route('admin.projects.show', compact('project'));
 
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Note $note)
+    public function destroy(Project $project)
     {
-        NoteService::destroy($note);
+        ProjectService::destroy($project);
 
-        return redirect()->route('admin.notes.index');
+        return redirect()->route('admin.projects.index');
 
     }
 }

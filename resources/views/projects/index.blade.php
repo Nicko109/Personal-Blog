@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Заметки</h1>
+                    <h1 class="m-0">Проекты</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -26,7 +26,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <a  href="{{ route('admin.notes.create') }}" class="btn btn-primary">Добавить</a>
+                            <a  href="{{ route('admin.projects.create') }}" class="btn btn-primary">Добавить</a>
                         </div>
 
                         <div class="card-body table-responsive p-0">
@@ -38,10 +38,10 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($notes as $note)
+                                @foreach($projects as $project)
                                     <tr>
-                                        <td>{{ $note->id }}</td>
-                                        <td><a  href="{{ route('admin.notes.show', $note->id) }}">{{ $note->title }}</a></td>
+                                        <td>{{ $project->id }}</td>
+                                        <td><a  href="{{ route('admin.projects.show', $project->id) }}">{{ $project->title }}</a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

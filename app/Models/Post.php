@@ -13,17 +13,12 @@ class Post extends Model
     protected $guarded = false;
     protected $withCount = ['comments'];
 
-    protected $with = ['likedUsers'];
 
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function likedUsers()
-    {
-        return $this->belongsToMany(User::class, 'liked_posts', 'post_id', 'user_id');
-    }
 
     public function comments()
     {

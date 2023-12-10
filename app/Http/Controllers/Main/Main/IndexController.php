@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Main\Main;
 
 use App\Http\Controllers\Controller;
-use App\Models\Note;
+use App\Models\Project;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Video;

@@ -1,33 +1,33 @@
 <?php
 
-namespace App\Http\Controllers\Main\Note;
+namespace App\Http\Controllers\Main\Project;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Post\CommentRequest;
 use App\Http\Resources\Comment\CommentResource;
-use App\Http\Resources\Note\NoteResource;
-use App\Models\Note;
-use App\Http\Requests\Note\StoreNoteRequest;
-use App\Http\Requests\Note\UpdateNoteRequest;
-use App\Models\NoteComment;
-use App\Services\NoteService;
+use App\Http\Resources\Project\ProjectResource;
+use App\Models\Project;
+use App\Http\Requests\Project\StoreProjectRequest;
+use App\Http\Requests\Project\UpdateProjectRequest;
+use App\Models\ProjectComment;
+use App\Services\ProjectService;
 use Mockery\Matcher\Not;
 
-class NoteController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $this->authorize('viewAny', Note::class);
-        $notes = NoteService::index();
+        $this->authorize('viewAny', Project::class);
+        $projects = ProjectService::index();
 
-        $notes = NoteResource::collection($notes)->resolve();
+        $projects = ProjectResource::collection($projects)->resolve();
 
         $isAdmin = auth()->user()->is_admin;
 
-        return inertia('Note/Index', compact('notes', 'isAdmin'));
+        return inertia('Project/Index', compact('projects', 'isAdmin'));
     }
 
     /**
@@ -35,90 +35,72 @@ class NoteController extends Controller
      */
     public function create()
     {
-        $this->authorize('create', Note::class);
-        return inertia('Note/Create');
+        $this->authorize('create', Project::class);
+        return inertia('Project/Create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreNoteRequest $request)
+    public function store(StoreProjectRequest $request)
     {
-        $this->authorize('create', Note::class);
+        $this->authorize('create', Project::class);
         $data = $request->validated();
 
-        $note = NoteService::store($data);
+        $project = ProjectService::store($data);
 
-        return redirect()->route('notes.index');
+        return redirect()->route('projects.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Note $note)
+    public function show(Project $project)
     {
-        $this->authorize('view', $note);
+        $this->authorize('view', $project);
 
-        $note = NoteResource::make($note)->resolve();
+        $project = ProjectResource::make($project)->resolve();
 
         $isAdmin = auth()->user()->is_admin;
 
 
-        return inertia('Note/Show', compact('note', 'isAdmin'));
+        return inertia('Project/Show', compact('project', 'isAdmin'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Note $note)
+    public function edit(Project $project)
     {
-        $this->authorize('update', $note);
-        $note = NoteResource::make($note)->resolve();
-        return inertia('Note/Edit', compact('note'));
+        $this->authorize('update', $project);
+        $project = ProjectResource::make($project)->resolve();
+        return inertia('Project/Edit', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateNoteRequest $request, Note $note)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
-        $this->authorize('update', $note);
+        $this->authorize('update', $project);
         $data = $request->validated();
-        NoteService::update($note, $data);
+        ProjectService::update($project, $data);
 
-        return redirect()->route('notes.show', compact('note'));
+        return redirect()->route('projects.show', compact('project'));
 
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Note $note)
+    public function destroy(Project $project)
     {
-        $this->authorize('delete', $note);
-        NoteService::destroy($note);
+        $this->authorize('delete', $project);
+        ProjectService::destroy($project);
 
-        return redirect()->route('notes.index');
+        return redirect()->route('projects.index');
 
     }
 
-
-    public function comment(Note $note, CommentRequest $request)
-    {
-        $data = $request->validated();
-        $data['note_id'] = $note->id;
-        $data['user_id'] = auth()->id();
-
-        $comment = NoteComment::create($data);
-
-        return new CommentResource($comment);
-    }
-
-    public function commentList(Note $note)
-    {
-        $comments = $note->comments()->latest()->get();
-
-        return CommentResource::collection($comments);
-    }
 
 }

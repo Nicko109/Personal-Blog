@@ -4,38 +4,38 @@ namespace App\Services;
 
 use App\Models\LikedNote;
 use App\Models\LikedPost;
-use App\Models\Note;
+use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
 
-class NoteService
+class ProjectService
 {
     public static function index()
     {
-        $notes = Note::latest()->get();
+        $projects = Project::all();
 
 
-        return $notes;
+        return $projects;
     }
 
 
 
 
-    public static function store(array $data) : Note
+    public static function store(array $data) : Project
     {
-        return Note::create($data);
+        return Project::create($data);
     }
 
 
 
 
-    public static function update(Note $note, array $data)
+    public static function update(Project $project, array $data)
     {
 
-        return $note->update($data);
+        return $project->update($data);
     }
 
-    public static function destroy(Note $note)
+    public static function destroy(Project $project)
     {
-        return $note->delete();
+        return $project->delete();
     }
 }
